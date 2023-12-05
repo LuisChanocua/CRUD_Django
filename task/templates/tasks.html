@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Task</h1>
+
+
+<ul>
+    {% for tasks in tasks %}
+    <!-- mostrando las tareas -->
+    <li>
+        <a href="{% url 'task_detail' tasks.id %}">
+
+            {% if tasks.important %}
+            <strong>{{tasks.title}}</strong>
+            
+            {% else %}
+            {{tasks.title}}
+            
+            {% endif %}
+            <p>{{tasks.description}}</p>
+            <p>{{tasks.user.username}}</p>
+            <!-- <p>{{tasks.important}}</p> -->
+
+        </a>
+    </li>
+{% endfor %}
+
+</ul>
+{% endblock %}
